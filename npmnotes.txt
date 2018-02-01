@@ -1,0 +1,14 @@
+/* To prepare system:
+ *		sudo npm init
+ *		npm install d3
+ *		npm install --save rollup
+ *		npm install rollup-plugin-node-resolve
+ *		npm install uglify-js
+ * Update d3
+ *		sudo npm update d3 --save
+ *			NOTE: doesn't seem to always work -- try to update all
+ * Rollup and uglify d3
+ *		npm run prepublish
+ * Minify CSS files
+ *		grunt cssmin
+ */
