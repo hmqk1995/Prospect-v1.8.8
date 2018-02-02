@@ -37,8 +37,18 @@ class Prospect {
 			break;
 
 		case 'prsp-template':
-			wp_enqueue_style('prsp-view-template-style', plugins_url('css/view-template.css', dirname(__FILE__)));
-			$page_template = dirname(__FILE__).'/view-template.php';
+		// allow users to redifine the view-template css in theme directory if the file exists
+			if (file_exists( get_stylesheet_directory() . '/prospect/css/view-template.css')) {
+				wp_enqueue_style('prsp-view-template-style', get_template_directory_uri() . '/prospect/css/view-template.css');
+			} else {
+				wp_enqueue_style('prsp-view-template-style', plugins_url('css/view-template.css', dirname(__FILE__)));
+			}
+			// allow users to redifine the view-template template in theme directory if the file exists
+			if (file_exists( get_stylesheet_directory() . '/prospect/view-template.php')) {
+				$page_template = get_stylesheet_directory() . '/prospect/view-template.php';
+			} else {
+				$page_template = dirname(__FILE__).'/view-template.php';
+			}
 			break;
 
 		case 'prsp-record':
