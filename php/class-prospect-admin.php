@@ -822,9 +822,12 @@ class ProspectAdmin {
 				wp_enqueue_script('vuejs', plugins_url('/lib/vuejs/vue.min.js', dirname(__FILE__)));
 				wp_enqueue_script('randomcolor', plugins_url('/lib/randomcolor.js', dirname(__FILE__)));
 				wp_enqueue_script('rainbow', plugins_url('/lib/rainbowvis.js', dirname(__FILE__)));
+						// color picker
+				wp_enqueue_script('vuejs-colorpicker', plugins_url('/lib/vuejs/vue-color.min.js', dirname(__FILE__)),
+								array('vuejs'));
 
 				wp_enqueue_script('edit-attribute', plugins_url('/js/edit-attribute.js', dirname(__FILE__)),
-								array('vuejs', 'randomcolor', 'rainbow', 'underscore'));
+								array('vuejs', 'randomcolor', 'rainbow', 'underscore', 'vuejs-colorpicker'));
 
 					// Get list of all custom fields currently used by Records
 				$cfs = ProspectAttribute::get_all_custom_field_names();
