@@ -319,8 +319,8 @@
 <script id="colorpicker" type="text/x-template">
 	<div class="colorpicker">
 		<input v-model="colors.hex" type="color" v-on:click="showColorPicker($event)" />
+		<span>{{ currentvalue }}</span>
 		<chrome-picker v-model="colors" v-if="show" />
-		<span>haha</span>
 	</div>
 </script>
 
