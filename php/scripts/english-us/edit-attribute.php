@@ -46,7 +46,7 @@
 			<ol class="vocab-parent">
 				<li v-for="(lgnd1, index1) in vLegend" class="legend-data-entry">
 					<span class="legend-label">{{lgnd1.l}}</span>
-					<colorpicker v-model="lgnd1.v" v-on:colorchanged="updateColor(lgnd1, index1, $event)"></colorpicker>
+					<colorpicker :currentvalue="lgnd1.v" v-on:colorchanged="updateColor(lgnd1, index1, $event)"></colorpicker>
 					<div class="ui-widget-header ui-corner-all legend-btn-set">
 						<icon-btn symbol="ui-icon-transfer-e-w" v-on:click="doVocabMove(index1,-1)" label=<?php _e('"Move Entries"', 'prospect'); ?>></icon-btn>
 						<icon-btn symbol="ui-icon-arrowthick-1-n" v-on:click="doLegendUp(index1,-1)" label=<?php _e('"Move Up"', 'prospect'); ?>></icon-btn>
