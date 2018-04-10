@@ -1204,7 +1204,7 @@ class ProspectAdmin {
 	public function write_template_dict($fp, $template)
 	{
 			// Translate between type codes and legible strings
-		$data_types = [
+		$data_types = array(
 			"V" => __("Vocabulary", 'prospect'),
 			"T" => __("Text", 'prospect'),
 			"g" => __("Tags", 'prospect'),
@@ -1220,7 +1220,7 @@ class ProspectAdmin {
 			"t" => __("Timecode", 'prospect'),
 			"P" => __("Pointer", 'prospect'),
 			"J" => __("Join", 'prospect')
-		];
+		);
 		fwrite($fp, __('Template: ', 'prospect').$template->def->l.' ('.$template->id.')'."\n");
 		fwrite($fp, "===================\n");
 
@@ -3117,7 +3117,7 @@ class ProspectAdmin {
 				// As there is an excess of data from Geonames server, remove unwanted stuff
 			$json_data = json_decode($content, true);
 			$json_data = $json_data['geonames'];
-			$filtered_data = [];
+			$filtered_data = array();
 			for($i = 0; $i < count($json_data); $i++) {
 			   $item = $json_data[$i];
 			   $filtered_data[] = array(
