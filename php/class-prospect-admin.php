@@ -2639,9 +2639,9 @@ class ProspectAdmin {
 
 		$result = array(
 			'id' => $id,
-			'def' => $att->def,
-			'l' => $att->legend
-			// 'def' => json_encode($att->def, JSON_UNESCAPED_UNICODE),
+//			'def' => $att->meta_def,
+			'l' => $att->legend,
+			 'def' => json_decode($att->meta_def, JSON_UNESCAPED_UNICODE),
 			// 'l' => json_encode($att->legend, JSON_UNESCAPED_UNICODE)
 		);
 		if ($att->x != null)
