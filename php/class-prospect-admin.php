@@ -2624,7 +2624,7 @@ class ProspectAdmin {
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/attids
 	public function rest_get_attributes()
 	{
-		$ids = ProspectAttribute::get_all_attribute_ids();
+		$ids = ProspectAttribute::get_all_attribute_ids('');
 		return $ids;
 	} // rest_get_attributes()
 
