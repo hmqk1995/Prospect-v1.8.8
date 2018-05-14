@@ -2624,7 +2624,7 @@ class ProspectAdmin {
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/attids
 	public function rest_get_attributes()
 	{
-		$ids = ProspectAttribute::get_all_attribute_ids('');
+		$ids = ProspectAttribute::get_all_attribute_ids(null);
 		return $ids;
 	} // rest_get_attributes()
 
@@ -2656,7 +2656,7 @@ class ProspectAdmin {
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/tempids
 	public function rest_get_templates()
 	{
-		$ids = ProspectTemplate::get_all_template_ids();
+		$ids = ProspectTemplate::get_all_template_ids(null);
 		return $ids;
 	} // rest_get_templates()
 
