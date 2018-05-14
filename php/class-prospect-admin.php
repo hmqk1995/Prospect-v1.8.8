@@ -2668,7 +2668,7 @@ class ProspectAdmin {
 		$id = $request['id'];
 		$format = $request['t'];
 
-		$template = new ProspectTemplate(false, $id, true, true, false, false);
+		$template = new ProspectTemplate(false, $id, true, true, true, true);
 		if ($template == null || $template->post_id == null)
 			return '';
 
@@ -2680,6 +2680,9 @@ class ProspectAdmin {
 
 		$result = array(
 			'id' => $id,
+			'post-id' => $template->post_id,
+			'view' => $template->view,
+            'pview' => $template->pview,
 			'def' => $template->def,
 			'n' => $template->get_num_records()
 		);
