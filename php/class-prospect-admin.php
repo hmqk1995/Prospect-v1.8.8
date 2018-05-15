@@ -2622,11 +2622,18 @@ class ProspectAdmin {
 	//=========
 
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/attids
-	public function rest_get_attributes()
+	public function rest_get_attids()
 	{
 		$ids = ProspectAttribute::get_all_attribute_ids(null);
 		return $ids;
-	} // rest_get_attributes()
+	} // rest_get_attids()
+
+        // PURPOSE: Endpoint for .../wp-json/prsp/v1/attributes
+    public function rest_get_attributes()
+    {
+        $attributes = ProspectAttribute::get_all_attributes(false, false, true, true);
+        return $attributes;
+    } // rest_get_attributes()
 
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/attribute/ID
 	public function rest_get_attribute(WP_REST_Request $request)
@@ -2824,8 +2831,12 @@ class ProspectAdmin {
 	{
 		register_rest_route('prsp/v1', '/attids', array(
 				'methods' => 'GET',
-				'callback' => array($this, 'rest_get_attributes')
+				'callback' => array($this, 'rest_get_attids')
 			));
+        register_rest_route('prsp/v1', '/attributes', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'rest_get_attributes')
+        ));
 		register_rest_route('prsp/v1', '/attribute/(?P<id>[\w\-]+)', array(
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_attribute')

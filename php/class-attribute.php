@@ -113,6 +113,7 @@ class ProspectAttribute {
 				$new_att = new ProspectAttribute(true, $att->ID, $unpack, $load_hint, $load_range, $load_legend, false);
 					// Ensure minimal data provided
 				if ($new_att->id != null && $new_att->id != '') {
+                    $new_att->post_name = get_the_title($new_att->post_id);
 					array_push($all_atts, $new_att);
 				}
 			}
