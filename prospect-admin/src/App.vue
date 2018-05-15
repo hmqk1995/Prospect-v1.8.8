@@ -3,10 +3,10 @@
     <navbar />
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3 sidebar d-none d-md-block bg-light">
+        <div class="col-md-2 sidebar d-none d-md-block bg-light">
           <sidebar />
         </div>
-        <main role="main" class="col-md-9">
+        <main role="main" class="col-md-10">
           <router-view/>
         </main>
       </div>
@@ -29,5 +29,6 @@ export default {
 <style>
 #app {
   font-family: -apple-system, "Helvetica Neue", "Arial", "Helvetica", " Segoe UI", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 </style>

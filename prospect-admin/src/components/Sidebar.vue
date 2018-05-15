@@ -1,6 +1,22 @@
 <template>
   <div class="sidebar-sticky">
-      sidebar
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Attributes</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Templates</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Records</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Exhibits</a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -17,7 +33,11 @@ export default {
 
 <style scoped>
 .sidebar-sticky {
-    padding-top: 72px;
+    padding-top: 80px;
+}
+li {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 @media(min-width: 768px) {
    .sidebar-sticky {

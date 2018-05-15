@@ -26,6 +26,6 @@ h2 {
 
 em {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 </style>
