@@ -363,6 +363,7 @@ function prospect_register_post_types()
 function prospect_activate()
 {
 	prospect_register_post_types();
+    prospect_add_admin_endpoint();
 	flush_rewrite_rules();
 
 	$role = get_role('contributor');
@@ -715,15 +716,15 @@ function prospect_deactivate()
  *
  * Kun  May 15th, 2018
  * * */
-add_action('init', 'prospect_add_admin_endpoint');
-function prospect_add_admin_endpoint() {
-    add_rewrite_endpoint( 'prospect-admin', EP_ROOT );
-}
-
 add_filter('request', 'prospect_admin_endpoint_filter_request');
 function prospect_admin_endpoint_filter_request($vars) {
     if( isset( $vars['prospect-admin'] ) ) $vars['prospect-admin'] = true;
     return $vars;
+}
+
+add_action('init', 'prospect_add_admin_endpoint');
+function prospect_add_admin_endpoint() {
+    add_rewrite_endpoint( 'prospect-admin', EP_ROOT );
 }
 
 add_action('template_redirect', 'prospect_admin_endpoint_template_include');
