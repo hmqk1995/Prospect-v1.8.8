@@ -709,6 +709,32 @@ function prospect_deactivate()
 	$role->remove_cap('create_prsp_readings');
 } // prospect_deactivate()
 
+/*
+ * *
+ * add custom admin endpoint
+ *
+ * Kun  May 15th, 2018
+ * * */
+add_action('init', 'prospect_add_admin_endpoint');
+function prospect_add_admin_endpoint() {
+    add_rewrite_endpoint( 'prospect-admin', EP_ROOT );
+}
+
+add_filter('request', 'prospect_admin_endpoint_filter_request');
+function prospect_admin_endpoint_filter_request($vars) {
+    if( isset( $vars['prospect-admin'] ) ) $vars['prospect-admin'] = true;
+    return $vars;
+}
+
+add_action('template_redirect', 'prospect_admin_endpoint_template_include');
+function prospect_admin_endpoint_template_include( $template ) {
+    if (get_query_var( 'prospect-admin' )) {
+        add_filter( 'template_include', function() {
+            return plugin_dir_path( __FILE__ ) . 'admin/index.php';
+        });
+    }
+}
+// end adding custom admin endpoint
 
 register_activation_hook(__FILE__, 'prospect_activate');
 register_deactivation_hook(__FILE__, 'prospect_deactivate');
@@ -718,7 +744,6 @@ register_deactivation_hook(__FILE__, 'prospect_deactivate');
 function prospect_init()
 {
 	prospect_register_post_types();
-
 	// show_admin_bar(false);
 	// add_filter('show_admin_bar', '__return_false');
 } // prospect_init()
