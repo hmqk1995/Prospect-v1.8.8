@@ -2,10 +2,10 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Dashboard</a>
+        <router-link class="nav-link" to="/">Dashboard</router-link>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Attributes</a>
+        <router-link class="nav-link" to="/attributes">Attributes</router-link>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Templates</a>

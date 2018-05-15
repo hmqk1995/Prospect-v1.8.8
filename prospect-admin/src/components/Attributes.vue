@@ -1,15 +1,14 @@
 <template>
-  <div class="content-area">
-      content
+  <div>
+      attributes
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Content',
+  name: 'Attributes',
   data () {
     return {
-      blogname: 'My Blog'
     }
   }
 }

@@ -31,4 +31,7 @@ export default {
   font-family: -apple-system, "Helvetica Neue", "Arial", "Helvetica", " Segoe UI", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+main {
+  padding-top: 90px;
+}
 </style>
