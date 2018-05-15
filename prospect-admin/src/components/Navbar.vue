@@ -1,7 +1,7 @@
 <template>
   <div class="navbar fixed-top bg-dark shadow">
     <div class="navbar-brand">
-      <h2>ProspectAdmin <em>- {{ blogname }}</em></h2>
+      <h3>ProspectAdmin <em>- {{ blogname }}</em></h3>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h2 {
+h3 {
   color: #93afe6;
   font-weight: 700;
 }

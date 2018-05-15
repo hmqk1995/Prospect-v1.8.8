@@ -17,6 +17,6 @@ export default {
 
 <style scoped>
 .content-area {
-    padding-top: 80px;
+    padding-top: 90px;
 }
 </style>

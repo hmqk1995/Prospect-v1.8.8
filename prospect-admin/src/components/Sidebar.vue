@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .sidebar-sticky {
-    padding-top: 80px;
+    padding-top: 90px;
 }
 li {
   font-size: 1.2rem;
