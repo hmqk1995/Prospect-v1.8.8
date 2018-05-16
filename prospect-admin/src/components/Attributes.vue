@@ -57,6 +57,7 @@ export default {
     }
   },
   mounted () {
+    let _nonce = _nonce
     $.get('http://localhost/cdh/wp-json/prsp/v1/attributes')
       .then((response) => {
         console.log(response.data)
