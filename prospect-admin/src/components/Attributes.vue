@@ -57,7 +57,6 @@ export default {
     }
   },
   mounted () {
-    let _nonce = _nonce
     $.get('http://localhost/cdh/wp-json/prsp/v1/attributes')
       .then((response) => {
         console.log(response.data)
@@ -67,7 +66,7 @@ export default {
         console.log(error)
       })
     $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
-      'title': 'Hello Moon'
+      'title': 'Hello Moon1'
     }, {
       headers: {'X-WP-Nonce': _nonce}
     })
