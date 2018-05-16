@@ -65,6 +65,17 @@ export default {
       .catch((error) => {
         console.log(error)
       })
+    $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
+      'title': 'Hello Moon'
+    }, {
+      headers: {'X-WP-Nonce': wpApiSettings.nonce}
+    })
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }
 </script>
