@@ -7,12 +7,22 @@
 </template>
 
 <script>
+import $ from 'axios'
 export default {
   name: 'Navbar',
   data () {
     return {
-      blogname: 'My Blog'
+      blogname: null
     }
+  },
+  mounted () {
+    $.get('http://localhost/cdh/wp-json')
+      .then((response) => {
+        this.blogname = response.data.name
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }
 </script>
