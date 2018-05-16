@@ -6,7 +6,7 @@
         <div class="col-md-2 sidebar d-none d-md-block bg-light">
           <sidebar />
         </div>
-        <main role="main" class="col-md-10">
+        <main role="main" class="col-md-10 ml-sm-auto">
           <router-view/>
         </main>
       </div>
@@ -33,5 +33,8 @@ export default {
 }
 main {
   padding-top: 90px;
+}
+.sidebar{
+  position: fixed;
 }
 </style>
