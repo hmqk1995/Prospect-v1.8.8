@@ -25,16 +25,8 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Add A New Attribute</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
     </div>
-    <table class="table table-striped table-bordered table-sm">
+    <table class="table table-striped table-sm">
       <thead class="thead-dark">
         <tr>
           <th width="5%" scope="col"></th>
@@ -90,5 +82,8 @@ export default {
   background: linear-gradient(to bottom, #f1f8ff 0%,#d8ebff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f8ff', endColorstr='#d8ebff',GradientType=0 );
   border: none;
+}
+table {
+  margin-top: 20px;
 }
 </style>

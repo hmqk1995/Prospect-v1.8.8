@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar fixed-top">
+  <div class="navbar fixed-top shadow">
     <div class="navbar-brand">
       <h3>ProspectAdmin <em>- {{ blogname }}</em></h3>
     </div>
@@ -32,10 +32,11 @@ export default {
 h3 {
   color: #fff;
   font-weight: 700;
+  font-size: 1.2rem;
 }
 
 em {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
