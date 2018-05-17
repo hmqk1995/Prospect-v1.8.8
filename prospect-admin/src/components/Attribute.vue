@@ -30,7 +30,8 @@
         <div class="form-group row">
           <label class="col-md-2" for="input3">Unique ID</label>
           <div class="col-md-4">
-            <input type="email"
+            <input
+              type="text"
               class="form-control"
               id="input3"
               aria-describedby="emailHelp"
@@ -42,10 +43,17 @@
         <div class="form-group row">
           <label class="col-md-2" for="exampleInput3">Value Delimiter</label>
           <div class="col-md-4">
-            <input style="width: 40px;" type="email" class="form-control" id="exampleInput4" aria-describedby="emailHelp">
+            <input
+              style="width: 40px;"
+              type="text"
+              class="form-control"
+              id="exampleInput4"
+              aria-describedby="emailHelp"
+              v-model="info.def.d">
             <small class="form-text text-muted">single character or blank.</small>
           </div>
         </div>
+        <button type="submit" class="btn btn-primary" v-on:click="updateInfo">Update</button>
       </form>
     </div>
   </div>
@@ -77,6 +85,9 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    updateInfo () {
+      console.log('updated!')
     }
   }
 }
