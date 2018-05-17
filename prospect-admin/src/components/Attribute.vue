@@ -36,7 +36,8 @@
               id="input3"
               aria-describedby="emailHelp"
               placeholder="Enter Unique ID"
-              v-model="info.id">
+              v-model="info.id"
+              disabled>
             <small class="form-text text-muted">An Attribute internal ID must consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
           </div>
         </div>
@@ -53,7 +54,11 @@
             <small class="form-text text-muted">single character or blank.</small>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" v-on:click="onUpdateInfo">Update</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          v-on:click.prevent="onUpdateInfo($route.params.id)">Update</button>
+        <button class="btn btn-secondary" @click="onClickBack">Back</button>
       </form>
     </div>
   </div>
@@ -86,11 +91,8 @@ export default {
           console.log(error)
         })
     },
-    onUpdateInfo () {
-      $.post('http://localhost/cdh/wp-json/prsp/v1/attribute/scopepost', {
-        'post-id': 564,
-        'id': 'scopeback'
-      }, {
+    onUpdateInfo (params) {
+      $.post('http://localhost/cdh/wp-json/prsp/v1/attribute/' + params, this.info, {
         headers: {'X-WP-Nonce': _nonce}
       })
         .then((response) => {
@@ -99,6 +101,9 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    onClickBack () {
+      this.$router.push('/attributes')
     }
   }
 }

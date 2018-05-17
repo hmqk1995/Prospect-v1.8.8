@@ -17,21 +17,13 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Add A New Attribute</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
     </div>
     <table class="table table-striped table-sm">
       <thead class="thead-dark">
         <tr>
           <th width="5%" scope="col"></th>
           <th width="10%" scope="col">Attribute ID</th>
-          <th width="20%" scope="col">Attribute Name</th>
+          <th width="20%" scope="col">Attribute Label</th>
           <th width="65%" scope="col">Operate</th>
         </tr>
       </thead>
@@ -39,7 +31,7 @@
         <tr v-for="(item, index) in info" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
-          <td>{{ item.post_name }}</td>
+          <td>{{ item.def.l }}</td>
           <td></td>
         </tr>
       </tbody>

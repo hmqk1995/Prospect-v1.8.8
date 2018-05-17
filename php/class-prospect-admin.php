@@ -2632,6 +2632,9 @@ class ProspectAdmin {
     public function rest_get_attributes()
     {
         $attributes = ProspectAttribute::get_all_attributes(false, false, true, true);
+        foreach ($attributes as $attribute) {
+            $attribute->def = json_decode($attribute->meta_def);
+        }
         return $attributes;
     } // rest_get_attributes()
 
@@ -2663,7 +2666,7 @@ class ProspectAdmin {
     public function rest_set_attribute(WP_REST_Request $request)
     {
         $post_id = $request['post-id'];
-        $id = $request['id'];
+        $def = $request['def'];
 
         $data = array( 'some', 'response', 'data' );
         // Create the response object
@@ -2673,7 +2676,7 @@ class ProspectAdmin {
         // Add a custom header
         $response->header( 'Location', 'http://example.com/' );
 
-        update_post_meta($post_id, 'att-id', $id);
+        update_post_meta($post_id, 'att-def', json_encode($def));
         return $response;
     } // rest_set_attribute()
 
