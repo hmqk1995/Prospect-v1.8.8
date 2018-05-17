@@ -38,7 +38,7 @@
       <tbody>
         <tr v-for="(item, index) in info" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td>{{ item.id }}</td>
+          <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
           <td>{{ item.post_name }}</td>
           <td></td>
         </tr>
