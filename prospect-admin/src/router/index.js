@@ -19,7 +19,7 @@ export default new Router({
       component: Attributes
     },
     {
-      path: '/attribute',
+      path: '/attribute/:id',
       name: 'Attribute',
       component: Attribute
     }
