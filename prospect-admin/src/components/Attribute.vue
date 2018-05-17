@@ -87,7 +87,18 @@ export default {
         })
     },
     onUpdateInfo () {
-      console.log('updated!')
+      $.post('http://localhost/cdh/wp-json/prsp/v1/attribute/scopepost', {
+        'post-id': 564,
+        'id': 'scopeback'
+      }, {
+        headers: {'X-WP-Nonce': _nonce}
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }

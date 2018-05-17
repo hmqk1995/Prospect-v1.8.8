@@ -2659,6 +2659,24 @@ class ProspectAdmin {
 		return $result;
 	} // rest_get_attribute()
 
+    // PURPOSE: Endpoint for .../wp-json/prsp/v1/attribute/ID
+    public function rest_set_attribute(WP_REST_Request $request)
+    {
+        $post_id = $request['post-id'];
+        $id = $request['id'];
+
+        $data = array( 'some', 'response', 'data' );
+        // Create the response object
+        $response = new WP_REST_Response( $data );
+        // Add a custom status code
+        $response->set_status( 201 );
+        // Add a custom header
+        $response->header( 'Location', 'http://example.com/' );
+
+        update_post_meta($post_id, 'att-id', $id);
+        return $response;
+    } // rest_set_attribute()
+
 
 		// PURPOSE: Endpoint for .../wp-json/prsp/v1/tempids
 	public function rest_get_templates()
@@ -2841,6 +2859,13 @@ class ProspectAdmin {
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_attribute')
 			));
+        register_rest_route('prsp/v1', '/attribute/(?P<id>[\w\-]+)', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'rest_set_attribute'),
+            'permission_callback' =>  function () {
+                return current_user_can( 'edit_others_posts' );
+            }
+        ));
 		register_rest_route('prsp/v1', '/tempids', array(
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_templates')
