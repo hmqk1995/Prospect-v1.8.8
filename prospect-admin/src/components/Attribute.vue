@@ -53,7 +53,7 @@
             <small class="form-text text-muted">single character or blank.</small>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" v-on:click="updateInfo">Update</button>
+        <button type="submit" class="btn btn-primary" v-on:click="onUpdateInfo">Update</button>
       </form>
     </div>
   </div>
@@ -86,7 +86,7 @@ export default {
           console.log(error)
         })
     },
-    updateInfo () {
+    onUpdateInfo () {
       console.log('updated!')
     }
   }
