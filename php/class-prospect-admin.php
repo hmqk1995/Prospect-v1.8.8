@@ -2634,6 +2634,7 @@ class ProspectAdmin {
         $attributes = ProspectAttribute::get_all_attributes(false, false, true, true);
         foreach ($attributes as $attribute) {
             $attribute->def = json_decode($attribute->meta_def);
+            $attribute->legend = json_decode($attribute->meta_legend);
         }
         return $attributes;
     } // rest_get_attributes()
