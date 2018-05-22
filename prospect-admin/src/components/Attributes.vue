@@ -35,11 +35,7 @@
           <td>{{ item.def.l }}</td>
           <td>{{ item.def.t }}</td>
           <td>
-            <template v-for="(legend, index) in item.legend">
-              <div class="legend-area" :style="{background: legend.v}" :key=index>{{ legend.l }}</div>
-              <div v-if="legend.z !== []" :key="'z_' + index">
-                {{ legend.z }}
-              </div>
+            <template v-for="(legend, index) in item.legend"><div class="legend-area" :style="{background: legend.v}" :key="'l_' + index">{{ legend.l }}</div><div v-for="legend in legend.z" class="legend-area sub" :style="{background: legend.v, verticalAlign: 'bottom'}">{{ legend.l }}</div>
             </template>
           </td>
         </tr>
@@ -104,5 +100,11 @@ table {
   color: #fff;
   box-sizing: border-box;
   padding: 5px 10px;
+}
+.sub {
+  padding: 0 5px;
+  width: auto;
+  min-width: 0;
+  font-size: 0.85rem;
 }
 </style>
