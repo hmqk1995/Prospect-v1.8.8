@@ -18,13 +18,13 @@
         </div>
       </div>
     </div>
-    <table class="table table-striped table-sm">
+    <table class="table table-striped table-sm table-bordered">
       <thead class="thead-dark">
         <tr>
-          <th width="5%" scope="col"></th>
+          <th width="2%" scope="col"></th>
           <th width="10%" scope="col">Attribute ID</th>
+          <th width="8%" scope="col">Type</th>
           <th width="20%" scope="col">Attribute Label</th>
-          <th width="5%" scope="col">Type</th>
           <th width="65%" scope="col">Legend</th>
         </tr>
       </thead>
@@ -32,8 +32,8 @@
         <tr v-for="(item, index) in info" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
-          <td>{{ item.def.l }}</td>
           <td>{{ type[item.def.t] }}</td>
+          <td>{{ item.def.l }}</td>
           <td>
             <template v-for="(legend, index) in item.legend"><div class="legend-area" :style="{background: legend.v}" :key="'l_' + index">{{ legend.l }}</div><div v-for="legend in legend.z" class="legend-area sub" :style="{background: legend.v, verticalAlign: 'bottom'}">{{ legend.l }}</div>
             </template>
