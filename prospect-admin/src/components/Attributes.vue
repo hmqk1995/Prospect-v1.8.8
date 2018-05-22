@@ -33,7 +33,7 @@
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
           <td>{{ item.def.l }}</td>
-          <td>{{ item.def.t }}</td>
+          <td>{{ type[item.def.t] }}</td>
           <td>
             <template v-for="(legend, index) in item.legend"><div class="legend-area" :style="{background: legend.v}" :key="'l_' + index">{{ legend.l }}</div><div v-for="legend in legend.z" class="legend-area sub" :style="{background: legend.v, verticalAlign: 'bottom'}">{{ legend.l }}</div>
             </template>
@@ -46,11 +46,13 @@
 
 <script>
 import $ from 'axios'
+import model from '../data.model';
 export default {
   name: 'Attributes',
   data () {
     return {
-      info: null
+      info: null,
+      type: model.type
     }
   },
   mounted () {
