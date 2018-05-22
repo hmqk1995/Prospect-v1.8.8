@@ -5,6 +5,20 @@
     <div>
       <form>
         <div class="form-group row">
+          <label class="col-md-2" for="input3">Unique ID</label>
+          <div class="col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              id="input3"
+              aria-describedby="emailHelp"
+              placeholder="Enter Unique ID"
+              v-model="info.id"
+              disabled>
+            <small class="form-text text-muted">An Attribute internal ID must consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
+          </div>
+        </div>
+        <div class="form-group row">
           <label class="col-md-2" for="input1">External Label</label>
           <div class="col-md-4">
             <input
@@ -25,20 +39,6 @@
               <option value="p">Private</option>
             </select>
             <small class="form-text text-muted">Hint messages to be edited.</small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-2" for="input3">Unique ID</label>
-          <div class="col-md-4">
-            <input
-              type="text"
-              class="form-control"
-              id="input3"
-              aria-describedby="emailHelp"
-              placeholder="Enter Unique ID"
-              v-model="info.id"
-              disabled>
-            <small class="form-text text-muted">An Attribute internal ID must consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
           </div>
         </div>
         <div class="form-group row">
