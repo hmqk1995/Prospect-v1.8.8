@@ -24,7 +24,8 @@
           <th width="5%" scope="col"></th>
           <th width="10%" scope="col">Attribute ID</th>
           <th width="20%" scope="col">Attribute Label</th>
-          <th width="65%" scope="col">Operate</th>
+          <th width="5%" scope="col">Type</th>
+          <th width="65%" scope="col">Legend</th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +33,15 @@
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
           <td>{{ item.def.l }}</td>
-          <td></td>
+          <td>{{ item.def.t }}</td>
+          <td>
+            <template v-for="(legend, index) in item.legend">
+              <div class="legend-area" :style="{background: legend.v}" :key=index>{{ legend.l }}</div>
+              <div v-if="legend.z !== []" :key="'z_' + index">
+                {{ legend.z }}
+              </div>
+            </template>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -88,5 +97,12 @@ export default {
 }
 table {
   margin-top: 20px;
+}
+.legend-area {
+  display: inline-block;
+  min-width: 100px;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 5px 10px;
 }
 </style>
