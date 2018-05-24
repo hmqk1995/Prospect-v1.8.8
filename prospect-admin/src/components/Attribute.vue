@@ -49,9 +49,36 @@
               type="text"
               class="form-control"
               id="delimiter"
-              aria-describedby="emailHelp"
+              aria-describedby="Value Delimiter"
               v-model="info.def.d">
             <small class="form-text text-muted">single character or blank.</small>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2" for="descriptiontext">Description Text</label>
+          <div class="col-md-4">
+            <textarea
+              type="textbox"
+              class="form-control"
+              id="descriptiontext"
+              aria-describedby="description text"
+              v-model="info.def.h">
+            </textarea>
+            <small class="form-text text-muted">Explain attribute entry to contributor.</small>
+          </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+          <label class="col-md-2" for="datatype">Data Type</label>
+          <div class="col-md-4">
+            <select
+              class="form-control"
+              id="datatype"
+              aria-describedby="Data Type"
+              v-model="info.def.t">
+               <option v-for="(item, index) in data.type" :value="index">{{ item }}</option>
+            </select>
+            <small class="form-text text-muted">Explain attribute entry to contributor.</small>
           </div>
         </div>
         <button
@@ -66,11 +93,13 @@
 
 <script>
 import $ from 'axios'
+import data from '../data.model'
 export default {
   data () {
     return {
       info: null,
-      externalLabel: null
+      externalLabel: null,
+      data: data
     }
   },
   mounted () {
