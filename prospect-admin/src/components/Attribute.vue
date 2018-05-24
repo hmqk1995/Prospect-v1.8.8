@@ -72,7 +72,7 @@
           <label class="col-md-2" for="datatype">Data Type</label>
           <div class="col-md-4">
             <select
-              class="form-control"
+              class="custom-select"
               id="datatype"
               aria-describedby="Data Type"
               v-model="info.def.t">
