@@ -81,6 +81,7 @@
             <small class="form-text text-muted">Explain attribute entry to contributor.</small>
           </div>
         </div>
+        <panel />
         <button
           type="submit"
           class="btn btn-primary"
@@ -94,7 +95,11 @@
 <script>
 import $ from 'axios'
 import data from '../data.model'
+import panel from './AttributeLegendPanel'
 export default {
+  components: {
+    'panel': panel,
+  },
   data () {
     return {
       info: null,
