@@ -5,12 +5,12 @@
     <div>
       <form>
         <div class="form-group row">
-          <label class="col-md-2" for="input3">Unique ID</label>
+          <label class="col-md-2" for="uniqueid">Unique ID</label>
           <div class="col-md-4">
             <input
               type="text"
               class="form-control"
-              id="input3"
+              id="uniqueid"
               aria-describedby="emailHelp"
               placeholder="Enter Unique ID"
               v-model="info.id"
@@ -19,12 +19,12 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-2" for="input1">External Label</label>
+          <label class="col-md-2" for="externallabel">External Label</label>
           <div class="col-md-4">
             <input
               type="text"
               class="form-control"
-              id="input1"
+              id="externallabel"
               aria-describedby="external label"
               placeholder="Enter External Label"
               v-model="info.def.l">
@@ -32,9 +32,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-2" for="input2">Privacy</label>
+          <label class="col-md-2" for="privacy">Privacy</label>
           <div class="col-md-4">
-            <select class="custom-select" id="input2" v-model="info.privacy">
+            <select class="custom-select" id="privacy" v-model="info.privacy">
               <option value="o">Public</option>
               <option value="p">Private</option>
             </select>
@@ -42,13 +42,13 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-md-2" for="exampleInput3">Value Delimiter</label>
+          <label class="col-md-2" for="delimiter">Value Delimiter</label>
           <div class="col-md-4">
             <input
               style="width: 40px;"
               type="text"
               class="form-control"
-              id="exampleInput4"
+              id="delimiter"
               aria-describedby="emailHelp"
               v-model="info.def.d">
             <small class="form-text text-muted">single character or blank.</small>
