@@ -98,7 +98,7 @@ import data from '../data.model'
 import panel from './AttributeLegendPanel'
 export default {
   components: {
-    'panel': panel,
+    'panel': panel
   },
   data () {
     return {

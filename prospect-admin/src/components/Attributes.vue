@@ -46,7 +46,7 @@
 
 <script>
 import $ from 'axios'
-import model from '../data.model';
+import model from '../data.model'
 export default {
   name: 'Attributes',
   data () {
