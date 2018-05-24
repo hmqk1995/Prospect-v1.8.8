@@ -15,8 +15,8 @@
               placeholder="Enter Unique ID"
               v-model="info.id"
               disabled>
-            <small class="form-text text-muted">An Attribute internal ID must consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
           </div>
+          <small class="col-md-6 form-text text-muted">An Attribute internal ID must consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
         </div>
         <div class="form-group row">
           <label class="col-md-2" for="externallabel">External Label</label>
@@ -28,8 +28,8 @@
               aria-describedby="external label"
               placeholder="Enter External Label"
               v-model="info.def.l">
-            <small class="form-text text-muted">Hint messages to be edited.</small>
           </div>
+          <small class="col-md-6 form-text text-muted">Hint messages to be edited.</small>
         </div>
         <div class="form-group row">
           <label class="col-md-2" for="privacy">Privacy</label>
@@ -38,8 +38,8 @@
               <option value="o">Public</option>
               <option value="p">Private</option>
             </select>
-            <small class="form-text text-muted">Hint messages to be edited.</small>
           </div>
+          <small class="col-md-6 form-text text-muted">Hint messages to be edited.</small>
         </div>
         <div class="form-group row">
           <label class="col-md-2" for="delimiter">Value Delimiter</label>
@@ -51,8 +51,8 @@
               id="delimiter"
               aria-describedby="Value Delimiter"
               v-model="info.def.d">
-            <small class="form-text text-muted">single character or blank.</small>
           </div>
+          <small class="col-md-6 form-text text-muted">single character or blank.</small>
         </div>
         <div class="form-group row">
           <label class="col-md-2" for="descriptiontext">Description Text</label>
@@ -64,8 +64,8 @@
               aria-describedby="description text"
               v-model="info.def.h">
             </textarea>
-            <small class="form-text text-muted">Explain attribute entry to contributor.</small>
           </div>
+          <small class="col-md-6 form-text text-muted">Explain attribute entry to contributor.</small>
         </div>
         <hr>
         <div class="form-group row">
@@ -78,8 +78,8 @@
               v-model="info.def.t">
                <option v-for="(item, index) in data.type" :value="index">{{ item }}</option>
             </select>
-            <small class="form-text text-muted">Explain attribute entry to contributor.</small>
           </div>
+          <small class="col-md-6 form-text text-muted">Explain attribute entry to contributor.</small>
         </div>
         <panel />
         <button
