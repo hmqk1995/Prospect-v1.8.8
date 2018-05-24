@@ -1,12 +1,12 @@
 <template>
   <div>
-    legend panel
+    legend panel {{ legend }}
   </div>
 </template>
 
 <script>
 export default {
-
+  props: ['legend'],
 }
 </script>
 

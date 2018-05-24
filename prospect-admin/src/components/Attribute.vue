@@ -81,7 +81,7 @@
           </div>
           <small class="col-md-6 form-text text-muted">Explain attribute entry to contributor.</small>
         </div>
-        <panel />
+        <panel :legend="info.legend" />
         <button
           type="submit"
           class="btn btn-primary"
