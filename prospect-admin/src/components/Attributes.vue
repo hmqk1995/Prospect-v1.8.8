@@ -22,14 +22,14 @@
       <thead class="thead-dark">
         <tr>
           <th width="2%" scope="col"></th>
-          <th width="10%" scope="col">Attribute ID</th>
-          <th width="8%" scope="col">Type</th>
-          <th width="20%" scope="col">Attribute Label</th>
+          <th @click="sort('id')" width="10%" scope="col">Attribute ID</th>
+          <th @click="sort('def.t')" width="8%" scope="col">Type</th>
+          <th @click="sort('def.l')" width="20%" scope="col">Attribute Label</th>
           <th width="65%" scope="col">Legend</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in info" :key=index>
+        <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/attribute/' + item.id ">{{ item.id }}</router-link></td>
           <td>{{ type[item.def.t] }}</td>
@@ -51,11 +51,42 @@ export default {
   name: 'Attributes',
   data () {
     return {
-      info: null,
-      type: model.type
+      info: [],
+      type: model.type,
+      currentSort: 'id',
+      currentSortDir:'asc'
     }
   },
-  mounted () {
+  methods: {
+    sort (name) {
+      //if s == current sort, reverse
+      if(name === this.currentSort) {
+        this.currentSortDir = this.currentSortDir=== 'asc' ? 'desc' : 'asc';
+      }
+      this.currentSort = name;
+    }
+  },
+  computed: {
+    sortedInfo () {
+      return this.info.sort((a, b) => {
+        let properties = this.currentSort.split('.');
+        let modifier = 1;
+        let _a = a;
+        let _b = b;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        while(properties.length > 0) {
+          _a = _a[properties[0]];
+          _b = _b[properties[0]];
+          properties.shift();
+        }
+        // console.log(_a, _b)
+        if(_a < _b) return -1 * modifier;
+        if(_a > _b) return 1 * modifier;
+        return 0;
+      })
+    }
+  },
+  created () {
     $.get('http://localhost/cdh/wp-json/prsp/v1/attributes')
       .then((response) => {
         console.log(response.data)
@@ -64,17 +95,20 @@ export default {
       .catch((error) => {
         console.log(error)
       })
-    $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
-      'title': 'Hello Moon1'
-    }, {
-      headers: {'X-WP-Nonce': _nonce}
-    })
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
+    //   'title': 'Hello Moon1'
+    // }, {
+    //   headers: {'X-WP-Nonce': _nonce}
+    // })
+    //   .then((response) => {
+    //     console.log(response)
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
+  },
+  mounted () {
+
   }
 }
 </script>
