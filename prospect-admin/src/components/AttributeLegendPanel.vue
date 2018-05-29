@@ -4,8 +4,8 @@
     {{ legend }}
     <div>
       <div v-for="item in legend">
-        <div class="legend">{{ item.l }}</div>
         <color-picker :color="item.v" />
+        <div class="legend">{{ item.l }}</div>
       </div>
     </div>
   </div>
