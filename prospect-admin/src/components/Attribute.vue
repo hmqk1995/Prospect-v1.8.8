@@ -55,6 +55,15 @@
           <small class="col-md-6 form-text text-muted">single character or blank.</small>
         </div>
         <div class="form-group row">
+          <label class="col-md-2" for="filter">Available as Filter in Exhibit</label>
+          <div class="col-md-4">
+            <b-form-checkbox id="checkbox1"
+              v-model="info.def.f"
+              unchecked-value="false" />
+          </div>
+          <small class="col-md-6 form-text text-muted">single character or blank.</small>
+        </div>
+        <div class="form-group row">
           <label class="col-md-2" for="descriptiontext">Description Text</label>
           <div class="col-md-4">
             <textarea
