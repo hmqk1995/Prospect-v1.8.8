@@ -731,7 +731,7 @@ add_action('template_redirect', 'prospect_admin_endpoint_template_include');
 function prospect_admin_endpoint_template_include( $template ) {
     if (get_query_var( 'prospect-admin' )) {
         add_filter( 'template_include', function() {
-            return plugin_dir_path( __FILE__ ) . 'prospect-admin/dist/index.php';
+            return plugin_dir_path( __FILE__ ) . 'prospect-admin/index.php';
         });
     }
 }

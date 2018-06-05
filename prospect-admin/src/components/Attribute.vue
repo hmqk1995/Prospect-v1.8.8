@@ -3,7 +3,7 @@
     <h2>Edit Attribute - {{ $route.params.id }}</h2>
     <hr>
     <div>
-      <form>
+      <form v-if="info">
         <div class="form-group row">
           <label class="col-md-2" for="uniqueid">Unique ID</label>
           <div class="col-md-4">

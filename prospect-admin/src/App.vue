@@ -15,16 +15,16 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import Navbar from '@/components/Navbar'
+import Sidebar from '@/components/Sidebar'
 export default {
-  name: 'App',
   components: {
     'navbar': Navbar,
     'sidebar': Sidebar
   }
 }
 </script>
+
 
 <style>
 #app {
