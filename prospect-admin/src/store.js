@@ -5,10 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    restUrl: _restUrl,
+    currentAttribute: null
   },
   mutations: {
-
   },
   actions: {
 
