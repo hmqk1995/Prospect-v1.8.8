@@ -31,8 +31,13 @@ export default {
         else
           return this.$store.state.attribute.legend[this.parentIndex].z[this.index].v
       },
-      set(value) {
-
+      set(color) {
+        this.$store.commit('setColor', {
+          color: color,
+          index: this.index,
+          parentIndex: this.parentIndex,
+          isSubItem: this.isSubItem
+        });
       }
     }
   },
