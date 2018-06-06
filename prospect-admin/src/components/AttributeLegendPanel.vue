@@ -5,10 +5,16 @@
     <div>
       <draggable v-model="legend">
         <div v-for="(item, index) in legend">
-          <color-picker @colorChosen="onColorChosen($event, index, false)" :color="item.v" />
+          <color-picker
+            :index="index"
+            :isSubItem="false"
+            :parentIndex="null"/>
           <div class="legend">{{ item.l }}</div>
           <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
-            <color-picker @colorChosen="onColorChosen($event, sindex, true, index)" :color="subitem.v" />
+            <color-picker
+              :index="sindex"
+              :isSubItem="true"
+              :parentIndex="index" />
             <div class="legend">{{ subitem.l }}</div>
           </div>
         </div>

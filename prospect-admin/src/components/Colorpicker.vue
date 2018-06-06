@@ -13,21 +13,32 @@
 <script>
 import { Chrome } from 'vue-color'
 export default {
-  props: ['color'],
+  props: ['index', 'isSubItem', 'parentIndex'],
   components: {
     'chrome-picker': Chrome
   },
   data () {
     return {
-      chosenColor: this.color,
       toggle: false,
       isPositionBottom: false
+    }
+  },
+  computed: {
+    chosenColor: {
+      get() {
+        if (!this.isSubItem)
+          return this.$store.state.attribute.legend[this.index].v
+        else
+          return this.$store.state.attribute.legend[this.parentIndex].z[this.index].v
+      },
+      set(value) {
+
+      }
     }
   },
   methods: {
     updateValue(color) {
       this.chosenColor = color.hex
-      this.$emit('colorChosen', this.chosenColor)
     },
     togglePanel(e) {
       this.toggle = !this.toggle
