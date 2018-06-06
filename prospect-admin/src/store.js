@@ -20,6 +20,10 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
+    // clear current attribute info, used when going back to homepage or submitted
+    clearAttribute(state) {
+      state.attribute = null
+    },
     // set the color info of legends
     setColor(state, info) {
       if (!info.isSubItem)

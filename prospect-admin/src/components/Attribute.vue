@@ -143,6 +143,7 @@ export default {
         })
     },
     onClickBack () {
+      this.$store.commit('clearAttribute')
       this.$router.push('/attributes')
     }
   }
