@@ -3,27 +3,37 @@
     <h4>Attribute Legends</h4>
     {{ legend }}
     <div>
-      <div v-for="(item, index) in legend">
-        <color-picker @colorChosen="onColorChosen($event, index, false)" :color="item.v" />
-        <div class="legend">{{ item.l }}</div>
-        <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
-          <color-picker @colorChosen="onColorChosen($event, sindex, true, index)" :color="subitem.v" />
-          <div class="legend">{{ subitem.l }}</div>
+      <draggable v-model="legend">
+        <div v-for="(item, index) in legend">
+          <color-picker @colorChosen="onColorChosen($event, index, false)" :color="item.v" />
+          <div class="legend">{{ item.l }}</div>
+          <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
+            <color-picker @colorChosen="onColorChosen($event, sindex, true, index)" :color="subitem.v" />
+            <div class="legend">{{ subitem.l }}</div>
+          </div>
         </div>
-      </div>
+      </draggable>
     </div>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import Colorpicker from './Colorpicker'
 export default {
   components: {
-    'color-picker': Colorpicker
+    'color-picker': Colorpicker,
+    draggable
   },
   computed: {
-    legend() {
-      return this.$store.state.attribute.legend
+    legend: {
+      get() {
+        return this.$store.state.attribute.legend
+      },
+      set(value) {
+        console.log(value)
+        return this.$store.commit('setLegendsOrder', value);
+      }
     }
   },
   methods: {

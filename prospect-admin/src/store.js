@@ -30,6 +30,9 @@ export default new Vuex.Store({
         state.attribute.legend[info.index].v = info.color
       else
         state.attribute.legend[info.parentIndex].z[info.index].v = info.color
+    },
+    setLegendsOrder(state, value) {
+      state.attribute.legend = value
     }
   },
   actions: {
