@@ -9,6 +9,7 @@ export default new Vuex.Store({
     attribute: null
   },
   mutations: {
+    // get json from serve and store it in attribute state
     setAttribute(state, name) {
       $.get(_restUrl + 'prsp/v1/attribute/' + name)
       .then((response) => {
@@ -18,6 +19,13 @@ export default new Vuex.Store({
       .catch((error) => {
         console.log(error)
       })
+    },
+    // set the color info of legends
+    setColor(state, info) {
+      if (!info.isSubItem)
+        state.attribute.legend[info.index].v = info.color
+      else
+        state.attribute.legend[info.parentIndex].z[info.index].v = info.color
     }
   },
   actions: {
