@@ -9,6 +9,7 @@
 </head>
 <body>
   <div id="app"></div>
+  <script>var _nonce = '<?php echo wp_create_nonce( "wp_rest" ); ?>';</script>
   <script src="<?php echo plugin_dir_url( __FILE__ ) . 'public/vue.js' ?>"></script>
   <script src="<?php echo plugin_dir_url( __FILE__ ) . 'dist/prospect-admin.umd.js' ?>"></script>
 </body>
