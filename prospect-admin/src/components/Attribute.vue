@@ -111,9 +111,13 @@ export default {
   },
   data () {
     return {
-      info: null,
       externalLabel: null,
       data: data
+    }
+  },
+  computed: {
+    info () {
+      return this.$store.state.attribute;
     }
   },
   mounted () {
@@ -125,14 +129,7 @@ export default {
   },
   methods: {
     getInfo (params) {
-      $.get(_restUrl + 'prsp/v1/attribute/' + params)
-        .then((response) => {
-          console.log(response.data)
-          this.info = response.data
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      this.$store.commit('setAttribute', params);
     },
     onUpdateInfo (params) {
       $.post(_restUrl + 'prsp/v1/attribute/' + params, this.info, {
