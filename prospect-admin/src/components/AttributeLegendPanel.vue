@@ -18,10 +18,14 @@
 <script>
 import Colorpicker from './Colorpicker'
 export default {
-  props: ['legend'],
   components: {
     'color-picker': Colorpicker
-  }
+  },
+  computed: {
+    legend() {
+      return this.$store.state.attribute.legend
+    }
+  } 
 }
 </script>
 
