@@ -10,13 +10,15 @@
             :isSubItem="false"
             :parentIndex="null"/>
           <div class="legend">{{ item.l }}</div>
-          <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
-            <color-picker
-              :index="sindex"
-              :isSubItem="true"
-              :parentIndex="index" />
-            <div class="legend">{{ subitem.l }}</div>
-          </div>
+          <draggable v-model="item.z">
+            <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
+              <color-picker
+                :index="sindex"
+                :isSubItem="true"
+                :parentIndex="index" />
+              <div class="legend">{{ subitem.l }}</div>
+            </div>
+          </draggable>
         </div>
       </draggable>
     </div>
