@@ -87,7 +87,7 @@ export default {
     }
   },
   created () {
-    $.get('http://localhost/cdh/wp-json/prsp/v1/attributes')
+    $.get(_restUrl + 'prsp/v1/attributes')
       .then((response) => {
         console.log(response.data)
         this.info = response.data

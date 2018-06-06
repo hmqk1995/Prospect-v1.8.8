@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     getInfo (params) {
-      $.get('http://localhost/cdh/wp-json/prsp/v1/attribute/' + params)
+      $.get(_restUrl + 'prsp/v1/attribute/' + params)
         .then((response) => {
           console.log(response.data)
           this.info = response.data
@@ -135,7 +135,7 @@ export default {
         })
     },
     onUpdateInfo (params) {
-      $.post('http://localhost/cdh/wp-json/prsp/v1/attribute/' + params, this.info, {
+      $.post(_restUrl + 'prsp/v1/attribute/' + params, this.info, {
         headers: {'X-WP-Nonce': _nonce}
       })
         .then((response) => {
