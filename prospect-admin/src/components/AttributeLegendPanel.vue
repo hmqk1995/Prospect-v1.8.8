@@ -1,26 +1,33 @@
 <template>
-  <div>
-    <h4>Attribute Legends - {{ typeDecode[type] }}</h4>
+  <div class="row">
+    <h4 class="col-md-12">Attribute Legends - {{ typeDecode[type] }}</h4>
     {{ legend }}
-    <div v-if="type === 'V'">
-      <draggable v-model="legend">
-        <div v-for="(item, index) in legend">
-          <color-picker
-            :index="index"
-            :isSubItem="false"
-            :parentIndex="null"/>
-          <div class="legend">{{ item.l }}</div>
-          <draggable v-model="item.z">
-            <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
-              <color-picker
-                :index="sindex"
-                :isSubItem="true"
-                :parentIndex="index" />
-              <div class="legend">{{ subitem.l }}</div>
-            </div>
-          </draggable>
-        </div>
-      </draggable>
+    <div class="col-md-6">
+      <div v-if="type === 'V'">
+        <draggable v-model="legend">
+          <div v-for="(item, index) in legend">
+            <color-picker
+              :index="index"
+              :isSubItem="false"
+              :parentIndex="null"/>
+            <div class="legend">{{ item.l }}</div>
+            <span class="delete" @click="deleteLegend(index)">X</span>
+            <draggable v-model="item.z">
+              <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
+                <color-picker
+                  :index="sindex"
+                  :isSubItem="true"
+                  :parentIndex="index" />
+                <div class="legend">{{ subitem.l }}</div>
+              </div>
+            </draggable>
+          </div>
+        </draggable>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Create a New Legend</h4>
+      <hr>
     </div>
   </div>
 </template>
@@ -64,6 +71,9 @@ export default {
         isSubItem: isSubItem,
         parentIndex: parentIndex
         });
+    },
+    deleteLegend(index) {
+      this.$store.commit('deleteLegend', index)
     }
   } 
 }

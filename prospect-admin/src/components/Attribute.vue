@@ -96,6 +96,7 @@
           type="submit"
           class="btn btn-primary"
           v-on:click.prevent="onUpdateInfo($route.params.id)">Update</button>
+        <button class="btn btn-light">Reset</button>
         <button class="btn btn-secondary" @click="onClickBack">Back</button>
       </form>
     </div>

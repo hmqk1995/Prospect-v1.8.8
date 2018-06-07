@@ -33,6 +33,9 @@ export default new Vuex.Store({
     },
     setLegendsOrder(state, value) {
       state.attribute.legend = value
+    },
+    deleteLegend(state, index) {
+      state.attribute.legend.splice(index, 1)
     }
   },
   actions: {
