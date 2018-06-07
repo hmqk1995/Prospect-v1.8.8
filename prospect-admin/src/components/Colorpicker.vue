@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     updateValue(color) {
-      this.chosenColor = color.hex
+      this.chosenColor = color.hex.toLowerCase()
     },
     togglePanel(e) {
       this.toggle = !this.toggle

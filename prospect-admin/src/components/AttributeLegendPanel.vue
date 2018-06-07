@@ -6,19 +6,35 @@
       <div v-if="type === 'V'">
         <draggable v-model="legend">
           <div v-for="(item, index) in legend">
-            <color-picker
+            <div class="input-group">
+              <color-picker
               :index="index"
               :isSubItem="false"
               :parentIndex="null"/>
-            <div class="legend">{{ item.l }}</div>
-            <span class="delete" @click="deleteLegend(index)">X</span>
+              <input type="text" class="legend form-control" v-model="item.l"/>
+              <button
+                class="delete btn btn-danger" 
+                @click="deleteLegend({
+                  index: index, 
+                  isSubItem: false
+                })">X</button>
+            </div>
             <draggable v-model="item.z">
               <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
-                <color-picker
-                  :index="sindex"
-                  :isSubItem="true"
-                  :parentIndex="index" />
-                <div class="legend">{{ subitem.l }}</div>
+                <div class="input-group">
+                  <color-picker
+                    :index="sindex"
+                    :isSubItem="true"
+                    :parentIndex="index" />
+                  <input type="text" class="legend form-control" v-model="subitem.l"/>
+                  <button
+                    class="delete btn btn-danger"
+                    @click="deleteLegend({
+                      index: sindex, 
+                      isSubItem: true, 
+                      parentIndex: index
+                    })">X</button>
+                </div>
               </div>
             </draggable>
           </div>
@@ -57,19 +73,8 @@ export default {
     }
   },
   methods: {
-    // if the legend is the subitem (2nd level), pass the parentindex to it
-    // and set isSubItem = true
-    onColorChosen(color, index, isSubItem, parentIndex) {
-      console.log(color, index, isSubItem, parentIndex)
-      this.$store.commit('setColor', {
-        color: color, 
-        index: index,
-        isSubItem: isSubItem,
-        parentIndex: parentIndex
-        });
-    },
-    deleteLegend(index) {
-      this.$store.commit('deleteLegend', index)
+    deleteLegend(info) {
+      this.$store.commit('deleteLegend', info)
     }
   } 
 }
