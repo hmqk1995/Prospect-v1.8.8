@@ -25,10 +25,6 @@
         </draggable>
       </div>
     </div>
-    <div class="col-md-6">
-      <h4>Create a New Legend</h4>
-      <hr>
-    </div>
   </div>
 </template>
 
