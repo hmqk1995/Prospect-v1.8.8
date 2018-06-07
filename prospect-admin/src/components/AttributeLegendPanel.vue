@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h4>Attribute Legends</h4>
+    <h4>Attribute Legends - {{ typeDecode[type] }}</h4>
     {{ legend }}
-    <div>
+    <div v-if="type === 'V'">
       <draggable v-model="legend">
         <div v-for="(item, index) in legend">
           <color-picker
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import data from '../data.model'
 import draggable from 'vuedraggable'
 import Colorpicker from './Colorpicker'
 export default {
@@ -33,7 +34,15 @@ export default {
     'color-picker': Colorpicker,
     draggable
   },
+  data() {
+    return {
+      typeDecode: data.type
+    }
+  },
   computed: {
+    type() {
+      return this.$store.state.attribute.def.t
+    },
     legend: {
       get() {
         return this.$store.state.attribute.legend
