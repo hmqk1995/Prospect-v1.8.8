@@ -96,7 +96,7 @@
           type="submit"
           class="btn btn-primary"
           v-on:click.prevent="onUpdateInfo($route.params.id)">Update</button>
-        <button class="btn btn-light">Reset</button>
+        <button v-on:click.prevent="resetAttribute" class="btn btn-light">Reset</button>
         <button class="btn btn-secondary" @click="onClickBack">Back</button>
       </form>
     </div>
@@ -147,6 +147,9 @@ export default {
     onClickBack () {
       this.$store.commit('clearAttribute')
       this.$router.push('/attributes')
+    },
+    resetAttribute () {
+      this.getInfo(this.$route.params.id)
     }
   }
 }
