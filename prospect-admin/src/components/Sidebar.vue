@@ -11,7 +11,7 @@
         <a href="#" class="nav-link">Templates</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Records</a>
+        <router-link class="nav-link" to="/records">Records</router-link>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Exhibits</a>
