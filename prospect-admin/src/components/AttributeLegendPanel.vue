@@ -13,11 +13,14 @@
               :parentIndex="null"/>
               <input type="text" class="legend form-control" v-model="item.l"/>
               <button
+                class="btn btn-success" 
+                @click="addSubLegend($event, index)">+</button>
+              <button
                 class="delete btn btn-danger" 
                 @click="deleteLegend({
                   index: index, 
                   isSubItem: false
-                })">X</button>
+                })">x</button>
             </div>
             <draggable v-model="item.z">
               <div class="sub-items" v-if="item.z" v-for="(subitem, sindex) in item.z">
@@ -33,12 +36,15 @@
                       index: sindex, 
                       isSubItem: true, 
                       parentIndex: index
-                    })">X</button>
+                    })">x</button>
                 </div>
               </div>
             </draggable>
           </div>
         </draggable>
+        <button
+          class="btn btn-success" 
+          @click="addTopLegend">+</button>
       </div>
     </div>
   </div>
@@ -75,6 +81,21 @@ export default {
   methods: {
     deleteLegend(info) {
       this.$store.commit('deleteLegend', info)
+    },
+    addSubLegend($event, index) {
+      this.legend[index].z.push({
+        l: "",
+        v: "",
+        b: false
+      });
+    },
+    addTopLegend() {
+      this.legend.push({
+        l: "",
+        v: "",
+        z: [],
+        b: false
+      });
     }
   } 
 }
@@ -87,5 +108,9 @@ export default {
 
 .sub-items {
   padding-left: 3rem;
+}
+
+button {
+  border-radius: 0;
 }
 </style>
