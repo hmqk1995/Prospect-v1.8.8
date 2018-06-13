@@ -46,6 +46,29 @@
           class="btn btn-success" 
           @click="addTopLegend">+</button>
       </div>
+      <div v-if="type === 'T'">
+        <draggable v-model="legend">
+          <div v-for="(item, index) in legend">
+            <div class="input-group">
+              <color-picker
+              :index="index"
+              :isSubItem="false"
+              :parentIndex="null"/>
+              <input placeholder="Label" type="text" class="legend form-control" v-model="item.l"/>
+              <input placeholder="Text Pattern" type="text" class="legend form-control" v-model="item.d"/>
+              <button
+                class="delete btn btn-danger" 
+                @click="deleteLegend({
+                  index: index, 
+                  isSubItem: false
+                })">x</button>
+            </div>
+          </div>
+        </draggable>
+        <button
+          class="btn btn-success" 
+          @click="addTopLegend">+</button>
+      </div>
     </div>
   </div>
 </template>
@@ -83,19 +106,33 @@ export default {
       this.$store.commit('deleteLegend', info)
     },
     addSubLegend($event, index) {
-      this.legend[index].z.push({
-        l: "",
-        v: "",
-        b: false
-      });
+      if (this.type === 'V') {
+        this.legend[index].z.push({
+          l: "",
+          v: "",
+          b: false
+        });
+      }
     },
     addTopLegend() {
-      this.legend.push({
-        l: "",
-        v: "",
-        z: [],
-        b: false
-      });
+      switch (this.type) {
+        case 'V':
+          this.legend.push({
+            l: "",
+            v: "",
+            z: [],
+            b: false
+          });
+          break;
+        case 'T':
+          this.legend.push({
+            l: "",
+            d: "",
+            v: "",
+            b: false
+          });
+          break;
+      }
     }
   } 
 }

@@ -5,7 +5,7 @@
         <div class="colorbox" :style="{'background': chosenColor}" @click="togglePanel"></div>
         <!-- <span class="colorlabel">{{ chosenColor }}</span> -->
       </div>
-      <input readonly type="text" class="colorinfo form-control" v-model="chosenColor" />
+      <input readonly placeholder="Color" type="text" class="colorinfo form-control" v-model="chosenColor" />
     </div>
     <chrome-picker :class="{'bottom': isPositionBottom, 'top': !isPositionBottom}" v-if="toggle" :value="chosenColor" @input="updateValue" />
   </div>
