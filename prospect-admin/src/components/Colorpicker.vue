@@ -13,37 +13,45 @@
 <script>
 import { Chrome } from 'vue-color'
 export default {
-  props: ['index', 'isSubItem', 'parentIndex'],
+  props: ['index', 'isSubItem', 'parentIndex', 'legend'],
   components: {
     'chrome-picker': Chrome
   },
   data () {
     return {
       toggle: false,
-      isPositionBottom: false
+      isPositionBottom: false,
+      storedColor: '#000000'
     }
   },
   computed: {
     chosenColor: {
       get() {
-        if (!this.isSubItem)
-          return this.$store.state.attribute.legend[this.index].v
-        else
-          return this.$store.state.attribute.legend[this.parentIndex].z[this.index].v
+        if (this.legend) {
+          if (!this.isSubItem)
+            return this.$store.state.attribute.legend[this.index].v
+          else
+            return this.$store.state.attribute.legend[this.parentIndex].z[this.index].v
+        } else {
+          return this.storedColor;
+        }
       },
       set(color) {
-        this.$store.commit('setColor', {
-          color: color,
-          index: this.index,
-          parentIndex: this.parentIndex,
-          isSubItem: this.isSubItem
-        });
+        if (this.legend) {
+          this.$store.commit('setColor', {
+            color: color,
+            index: this.index,
+            parentIndex: this.parentIndex,
+            isSubItem: this.isSubItem
+          });
+        }
       }
     }
   },
   methods: {
     updateValue(color) {
       this.chosenColor = color.hex.toLowerCase()
+      this.storedColor = color.hex.toLowerCase()
     },
     togglePanel(e) {
       this.toggle = !this.toggle
