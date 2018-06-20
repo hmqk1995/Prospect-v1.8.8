@@ -8,7 +8,7 @@
         <router-link class="nav-link" to="/attributes">Attributes</router-link>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">Templates</a>
+        <router-link class="nav-link" to="/templates">Templates</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" to="/records">Records</router-link>

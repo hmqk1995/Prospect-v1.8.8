@@ -6,6 +6,8 @@ import Attributes from '@/views/Attributes'
 import Attribute from '@/components/Attribute'
 import Records from '@/views/Records'
 import Record from '@/components/Record'
+import Templates from '@/views/Templates'
+import Template from '@/components/Template'
 
 Vue.use(Router)
 
@@ -29,6 +31,11 @@ export default new Router({
     {
       path: '/records',
       name: 'Records',
+      component: Records
+    }
+    {
+      path: '/templates',
+      name: 'Templates',
       component: Records
     }
   ]
