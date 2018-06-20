@@ -32,7 +32,7 @@ export default new Router({
       path: '/records',
       name: 'Records',
       component: Records
-    }
+    },
     {
       path: '/templates',
       name: 'Templates',
