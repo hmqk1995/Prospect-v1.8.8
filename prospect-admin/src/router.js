@@ -36,7 +36,7 @@ export default new Router({
     {
       path: '/templates',
       name: 'Templates',
-      component: Records
+      component: Templates
     }
   ]
 })
