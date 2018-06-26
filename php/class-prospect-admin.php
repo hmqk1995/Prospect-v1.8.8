@@ -2629,9 +2629,20 @@ class ProspectAdmin {
 	} // rest_get_attids()
 
         // PURPOSE: Endpoint for .../wp-json/prsp/v1/attributes
-    public function rest_get_attributes()
+    public function rest_get_attributes(WP_REST_Request $request)
     {
-        $attributes = ProspectAttribute::get_all_attributes(false, false, true, true);
+		// arguments for organizing output json data
+		// @per_page, @page, @order, @orderby
+		// reference: https://codex.wordpress.org/Class_Reference/WP_Query
+		$args = array(
+			'post_type' => 'prsp-attribute', 
+			'post_status' => 'publish', 
+			'posts_per_page' => isset($request['per_page']) ? (int) $request['per_page'] : -1,
+			'paged' => isset($request['page']) ? (int) $request['page'] : -1,
+			'order' => isset($request['order']) ? $request['order'] : 'asc',
+			'orderby' => isset($request['orderby']) ? $request['orderby'] : 'none'
+		);
+        $attributes = ProspectAttribute::get_all_attributes(false, false, true, true, $args);
         foreach ($attributes as $attribute) {
             $attribute->def = json_decode($attribute->meta_def);
             $attribute->legend = json_decode($attribute->meta_legend);
@@ -2858,7 +2869,7 @@ class ProspectAdmin {
         register_rest_route('prsp/v1', '/attributes', array(
             'methods' => 'GET',
             'callback' => array($this, 'rest_get_attributes')
-        ));
+		));
 		register_rest_route('prsp/v1', '/attribute/(?P<id>[\w\-]+)', array(
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_attribute')

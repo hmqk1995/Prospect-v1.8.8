@@ -101,12 +101,14 @@ class ProspectAttribute {
 		// RETURNS: Array of all defined Attributes sorted by ID
 		// NOTES:	Selects only published Attributes
 		// ASSUMES: Attributes *not* loaded for visualization purposes
-	static public function get_all_attributes($unpack, $load_hint, $load_range, $load_legend)
+	static public function get_all_attributes($unpack, $load_hint, $load_range, $load_legend, $args = null)
 	{
 		$all_atts = array();
 
-			// Loop through all published Attributes adding to array
-		$args = array('post_type' => 'prsp-attribute', 'post_status' => 'publish', 'posts_per_page' => -1 );
+		// Loop through all published Attributes adding to array
+		if ($args === null) {
+			$args = array('post_type' => 'prsp-attribute', 'post_status' => 'publish', 'posts_per_page' => -1 );
+		}
 		$loop = new WP_Query( $args );
 		if ($loop->have_posts()) {
 			foreach ($loop->posts as $att) {
