@@ -34,6 +34,11 @@ export default new Router({
       component: Records
     },
     {
+      path: '/record/:id',
+      name: 'Record',
+      component: Record
+    },
+    {
       path: '/templates',
       name: 'Templates',
       component: Templates
