@@ -91,7 +91,7 @@ export default {
         this.info = response.data
       })
       .catch((error) => {
-        console.log(_restUrl + 'prsp/v1/records/PROJ_INIT&0&100');
+        console.log(_restUrl + 'wp/v2/prsp-template');
         console.log(error)
       })
     // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
