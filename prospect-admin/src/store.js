@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    attribute: null
+    attribute: null,
+    record: null
   },
   mutations: {
     // get json from serve and store it in attribute state

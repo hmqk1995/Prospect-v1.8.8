@@ -35,7 +35,7 @@
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td>{{ item.id }}</td>
+          <td><router-link :to="'/record/' + item.id ">{{ item.id }}</router-link></td>
           <td>{{ item.title.rendered }}</td>
           <td>{{ item.author }}</td>
           <td>{{ item.categories }}</td>
