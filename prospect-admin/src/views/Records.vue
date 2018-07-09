@@ -27,7 +27,7 @@
           <th @click="sort('author')" width="10%" scope="col">Author</th>
           <th @click="sort('categories')" width="10%" scope="col">Categories</th>
           <th @click="sort('tags')" width="10%" scope="col">Tags</th>
-          <th @click="sort('modified')" width="10%" scope="col">Date</th>
+          <th @click="sort('modified')" width="10%" scope="col">Date Modified</th>
           <th @click="sort('template')" width="10%" scope="col">Template</th>
 
         </tr>
@@ -36,7 +36,7 @@
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td><router-link :to="'/record/' + item.id ">{{ item.id }}</router-link></td>
-          <td>{{ item.title.rendered }}</td>
+          <td><router-link :to="'/record/' + item.id ">{{ item.title.rendered }}</router-link></td>
           <td>{{ item.author }}</td>
           <td>{{ item.categories }}</td>
           <td>{{ item.tags }}</td>
