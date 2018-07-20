@@ -2635,8 +2635,8 @@ class ProspectAdmin {
 		// @per_page, @page, @order, @orderby
 		// reference: https://codex.wordpress.org/Class_Reference/WP_Query
 		$args = array(
-			'post_type' => 'prsp-attribute', 
-			'post_status' => 'publish', 
+			'post_type' => 'prsp-attribute',
+			'post_status' => 'publish',
 			'posts_per_page' => isset($request['per_page']) ? (int) $request['per_page'] : -1,
 			'paged' => isset($request['page']) ? (int) $request['page'] : -1,
 			'order' => isset($request['order']) ? $request['order'] : 'asc',
@@ -2859,6 +2859,16 @@ class ProspectAdmin {
 	} // rest_get_record()
 
 
+
+/*
+public function rest_get_all_records(){
+	return null;
+}
+public function rest_get_all_templates(){
+	return null;
+}
+*/
+
 		// PURPOSE: Add the REST endpoints
 	public function add_rest_api()
 	{
@@ -2881,6 +2891,19 @@ class ProspectAdmin {
                 return current_user_can( 'edit_others_posts' );
             }
         ));
+				/*
+				register_rest_route('prsp/v1', '/records', array(
+					'methods' => 'GET',
+					'callback' => array($this, 'rest_get_all_records')
+				));
+
+			register_rest_route('prsp/v1', '/templates', array(
+				'methods' => 'GET',
+				'callback' => array($this, 'rest_get_all_templates')
+			));
+			*/
+
+
 		register_rest_route('prsp/v1', '/tempids', array(
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_templates')
