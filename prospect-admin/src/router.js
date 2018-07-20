@@ -42,6 +42,11 @@ export default new Router({
       path: '/templates',
       name: 'Templates',
       component: Templates
+    },
+    {
+      path: '/template/:id',
+      name: 'Template',
+      component: Template
     }
   ]
 })
