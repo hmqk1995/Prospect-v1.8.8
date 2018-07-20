@@ -27,7 +27,7 @@
           <th @click="sort('author')" width="10%" scope="col">Author</th>
           <th @click="sort('categories')" width="10%" scope="col">Categories</th>
           <th @click="sort('tags')" width="10%" scope="col">Tags</th>
-          <th @click="sort('modified')" width="10%" scope="col">Date Modified</th>
+          <th @click="sort('modified')" width="10%" scope="col">Date</th>
           <th @click="sort('template')" width="10%" scope="col">Template</th>
 
         </tr>
@@ -35,7 +35,7 @@
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td><router-link :to="'/record/' + item.id ">{{ item.id }}</router-link></td>
+          <td>{{ item.id }}</td>
           <td><router-link :to="'/record/' + item.id ">{{ item.title.rendered }}</router-link></td>
           <td>{{ item.author }}</td>
           <td>{{ item.categories }}</td>
@@ -96,10 +96,11 @@ export default {
     $.get(_restUrl + 'wp/v2/prsp-record')
       .then((response) => {
         console.log(response.data)
+        console.log("test")
         this.info = response.data
       })
       .catch((error) => {
-        console.log(_restUrl + 'wp/v2/prsp-record');
+        console.log(_restUrl + 'prsp/v1/record/265');
         console.log(error)
       })
     // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
