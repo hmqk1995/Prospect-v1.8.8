@@ -2868,7 +2868,6 @@ public function rest_get_all_templates(){
 	return null;
 }
 */
-
 		// PURPOSE: Add the REST endpoints
 	public function add_rest_api()
 	{
@@ -2891,7 +2890,7 @@ public function rest_get_all_templates(){
                 return current_user_can( 'edit_others_posts' );
             }
         ));
-				/*
+		/*
 				register_rest_route('prsp/v1', '/records', array(
 					'methods' => 'GET',
 					'callback' => array($this, 'rest_get_all_records')
@@ -2901,7 +2900,7 @@ public function rest_get_all_templates(){
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_all_templates')
 			));
-			*/
+*/
 
 
 		register_rest_route('prsp/v1', '/tempids', array(
