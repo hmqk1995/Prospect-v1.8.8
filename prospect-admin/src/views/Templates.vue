@@ -23,17 +23,15 @@
         <tr>
           <th width="2%" scope="col"></th>
           <th @click="sort('id')" width="10%" scope="col">ID</th>
-          <th @click="sort('title.rendered')" width="10%" scope="col">Title</th>
-          <th @click="sort('modified')" width="10%" scope="col">Date</th>
+          <th @click="sort('def.l')" width="10%" scope="col">Title</th>
 
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td>{{ item.id }}</td>
-          <td>{{ item.title.rendered }}</td>
-          <td>{{ item.modified }}</td>
+          <td>{{ item.post_id }}</td>
+          <td>{{ item.def.l }}</td>
 
         </tr>
       </tbody>
@@ -45,15 +43,16 @@
 import $ from 'axios'
 import model from '../data.model'
 export default {
-  name: 'Records',
+  name: 'Templates',
   data () {
     return {
       info: [],
       type: model.type,
-      currentSort: 'id',
+      currentSort: 'post_id',
       currentSortDir:'asc'
     }
   },
+
   methods: {
     sort (name) {
       //if s == current sort, reverse
@@ -85,13 +84,13 @@ export default {
     }
   },
   created () {
-    $.get(_restUrl + 'wp/v2/prsp-template')
+    $.get(_restUrl + 'prsp/v1/templates')
       .then((response) => {
         console.log(response.data)
         this.info = response.data
       })
       .catch((error) => {
-        console.log(_restUrl + 'wp/v2/prsp-template');
+        console.log(_restUrl + 'prsp/v1/templates');
         console.log(error)
       })
     // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {

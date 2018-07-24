@@ -2860,14 +2860,26 @@ class ProspectAdmin {
 
 
 
-/*
-public function rest_get_all_records(){
+
+public function rest_get_all_records(WP_REST_Request $request){
 	return null;
-}
-public function rest_get_all_templates(){
-	return null;
-}
-*/
+} //rest_get_all_records
+
+
+public function rest_get_all_templates(WP_REST_Request $request){
+	/*if (!current_user_can('edit_prsp_record')){
+		return '';
+	}
+	*/
+	$templates = ProspectTemplate::get_all_template_defs(false, false, true, true, false);
+	foreach ($templates as $template) {
+			$template->def = json_decode($template->meta_def);
+			//$template->legend = json_decode($template->meta_legend);
+	}
+	return $templates;
+
+} //rest_get_all_templates
+
 		// PURPOSE: Add the REST endpoints
 	public function add_rest_api()
 	{
@@ -2890,7 +2902,11 @@ public function rest_get_all_templates(){
                 return current_user_can( 'edit_others_posts' );
             }
         ));
-		/*
+
+
+
+
+
 				register_rest_route('prsp/v1', '/records', array(
 					'methods' => 'GET',
 					'callback' => array($this, 'rest_get_all_records')
@@ -2900,9 +2916,6 @@ public function rest_get_all_templates(){
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_all_templates')
 			));
-*/
-
-
 		register_rest_route('prsp/v1', '/tempids', array(
 				'methods' => 'GET',
 				'callback' => array($this, 'rest_get_templates')
@@ -3148,6 +3161,7 @@ public function rest_get_all_templates(){
 		$excerpt = $_POST['excerpt'];
 
 		$content = @file_get_contents($transcript_url);
+		echo $content;
 		if ($content === false) {
 			trigger_error("Cannot load transcript file at ".$transcript_url);
 			$result = 'Cannot load transcript file';
