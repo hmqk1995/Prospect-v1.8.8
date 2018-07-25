@@ -31,6 +31,16 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
+    setTemplate(state, name) {
+      $.get(_restUrl + 'prsp/v1/template/' + name) //fix paramaters for retrieving template
+      .then((response) => {
+        console.log(response.data)
+        state.record = response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
     // clear current attribute info, used when going back to homepage or submitted
     clearAttribute(state) {
       state.attribute = null
