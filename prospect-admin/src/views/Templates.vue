@@ -31,8 +31,7 @@
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td>{{ item.post_id }}</td>
-          <td>{{ item.def.l }}</td>
-
+          <td><router-link :to="'/template/' + item.post_id ">{{ item.def.l }}</router-link></td>
         </tr>
       </tbody>
     </table>
@@ -90,7 +89,7 @@ export default {
         this.info = response.data
       })
       .catch((error) => {
-        console.log(_restUrl + 'prsp/v1/templates');
+        console.log(_restUrl + 'prsp/v1/templates')
         console.log(error)
       })
     // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
