@@ -2874,7 +2874,15 @@ public function rest_get_all_templates(WP_REST_Request $request){
 	$templates = ProspectTemplate::get_all_template_defs(false, false, true, true, false);
 	foreach ($templates as $template) {
 			$template->def = json_decode($template->meta_def);
-			//$template->legend = json_decode($template->meta_legend);
+			$template->view = json_decode($template->meta_view);
+			$template->get_all_attributes(false);
+			$template->def->a = $template->all_att_ids; //redundant?
+			$template->n = $template->get_num_records();
+			$template->recids = $template->get_all_record_ids();
+				/*
+			'view' => $template->view,
+			'pview' => $template->pview,
+			*/
 	}
 	return $templates;
 
@@ -3161,7 +3169,6 @@ public function rest_get_all_templates(WP_REST_Request $request){
 		$excerpt = $_POST['excerpt'];
 
 		$content = @file_get_contents($transcript_url);
-		echo $content;
 		if ($content === false) {
 			trigger_error("Cannot load transcript file at ".$transcript_url);
 			$result = 'Cannot load transcript file';
