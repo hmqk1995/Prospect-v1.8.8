@@ -2707,7 +2707,6 @@ class ProspectAdmin {
 	{
 		$id = $request['id'];
 		$format = $request['t'];
-
 		$template = new ProspectTemplate(false, $id, true, true, true, true);
 		if ($template == null || $template->post_id == null)
 			return '';
@@ -2862,15 +2861,15 @@ class ProspectAdmin {
 
 
 public function rest_get_all_records(WP_REST_Request $request){
+
+
+
+
 	return null;
 } //rest_get_all_records
 
 
 public function rest_get_all_templates(WP_REST_Request $request){
-	/*if (!current_user_can('edit_prsp_record')){
-		return '';
-	}
-	*/
 	$templates = ProspectTemplate::get_all_template_defs(false, false, true, true, false);
 	foreach ($templates as $template) {
 			$template->def = json_decode($template->meta_def);
@@ -2879,6 +2878,7 @@ public function rest_get_all_templates(WP_REST_Request $request){
 			$template->def->a = $template->all_att_ids; //redundant?
 			$template->n = $template->get_num_records();
 			$template->recids = $template->get_all_record_ids();
+			$template->recordData = null; //will get populated with records in nested get request per template
 				/*
 			'view' => $template->view,
 			'pview' => $template->pview,
