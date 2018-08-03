@@ -24,6 +24,8 @@
           <th width="2%" scope="col"></th>
           <th @click="sort('id')" width="10%" scope="col">ID</th>
           <th @click="sort('def.l')" width="10%" scope="col">Title</th>
+          <th width="10%" scope="col">Test row</th>
+          <th width="10%" scope="col">Attributes</th>
 
         </tr>
       </thead>
@@ -31,7 +33,14 @@
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
           <td>{{ item.post_id }}</td>
-          <td><router-link :to="'/template/' + item.post_id ">{{ item.def.l }}</router-link></td>
+          <td><router-link :to="'/template/' + item.id ">{{ item.def.l }}</router-link></td>
+          <td>{{ item.recordData }}</td>
+          <td>
+          <template v-for="attribute in item.def.a">
+            <div class="attlist"> {{ attribute }}</router-link></div>
+          </template>
+
+          </td>
         </tr>
       </tbody>
     </table>
@@ -84,14 +93,29 @@ export default {
   },
   created () {
     $.get(_restUrl + 'prsp/v1/templates')
-      .then((response) => {
-        console.log(response.data)
-        this.info = response.data
+      .then((tResponse) => {
+          tResponse.data.forEach(function(element, i){
+            console.log("index is " + tResponse.data[i]["n"])
+            if(tResponse.data[i]["n"] != 0){
+            $.get(_restUrl + 'prsp/v1/records/' + element.id + '&0&' + tResponse.data[i]["n"])
+            .then((rResponse) => {
+            element.recordData = rResponse.data
+          })
+          .catch((error) => {
+            console.log("internal loop error")
+            console.log(error)
+          })
+        }
+        })
+        this.info = tResponse.data
+        console.log(this.info)
       })
       .catch((error) => {
-        console.log(_restUrl + 'prsp/v1/templates')
+        console.log("external loop error")
         console.log(error)
       })
+
+
     // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
     //   'title': 'Hello Moon1'
     // }, {
@@ -131,6 +155,14 @@ table {
   display: inline-block;
   min-width: 100px;
   color: #fff;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+.attlist {
+  display: inline-block;
+  min-width: 100px;
+  color: #fff;
+  background: #42c5f4;
   box-sizing: border-box;
   padding: 5px 10px;
 }
