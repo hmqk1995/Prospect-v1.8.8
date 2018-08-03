@@ -138,7 +138,7 @@ class ProspectTemplate {
 				'template' => null,					// template id (required)
 				'display' => 'list',				// display type (list, cards, images)
 				'image_attr' => null,				// attribute id of image to be displayed (optional)
-				'content_attr' => null,				// attribute id of additional content to be displayed (optional)	
+				'content_attr' => null,				// attribute id of additional content to be displayed (optional)
 				'filter_attr_id' => null,			// filter attribute id (optional)
 				'filter_attr_val' => null,			// filter attribute value (optional)
 				'filter_attr_comp' => '='			// filter attribute comparison (=, !=)
@@ -256,7 +256,7 @@ class ProspectTemplate {
 			break;
 		}
 
-		$html .= '</div>';	// prospect-shortcode 
+		$html .= '</div>';	// prospect-shortcode
 
 		return $html;
 	}
@@ -386,6 +386,29 @@ class ProspectTemplate {
 		}
 		return $ids;
 	} // get_all_record_ids()
+
+public function get_all_record_names(){
+    $args = array('post_type' => 'prsp-record', 'meta_key' => 'tmplt-id',
+            'meta_value' => $this->id, 'post_status' => 'publish');
+    $query = new WP_Query($args);
+    return $query;
+  }
+    /*
+    $names = array();
+    if ($query->have_posts()) {
+      foreach ($query->posts as $post) {
+
+
+
+        $id = get_post_meta($post->ID, 'record-id', true);
+        if ($id && $id != '')
+          array_push($ids, $id);
+      }
+    }
+    return $names;
+*/
+//return array of record names of this template type from wp_query
+
 
 
 		// RETURNS: Array of Dependent templates joined by this Template ordered by ID
