@@ -39,7 +39,7 @@ export default {
       this.$store.commit('clearTemplate')
       this.$router.push('/templates')
     },
-    resetAttribute () {
+    resetTemplate () {
       this.getInfo(this.$route.params.id)
     }
   }
