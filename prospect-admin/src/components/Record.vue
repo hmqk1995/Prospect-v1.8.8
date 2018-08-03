@@ -53,7 +53,7 @@ export default {
       this.$store.commit('clearRecord')
       this.$router.push('/records')
     },
-    resetAttribute () {
+    resetRecord () {
       this.getInfo(this.$route.params.id)
     }
   }
