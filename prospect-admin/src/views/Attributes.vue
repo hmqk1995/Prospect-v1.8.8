@@ -35,7 +35,9 @@
           <td>{{ type[item.def.t] }}</td>
           <td>{{ item.def.l }}</td>
           <td>
-            <template v-for="(legend, index) in item.legend"><div class="legend-area" :style="{background: legend.v}" :key="'l_' + index">{{ legend.l }}</div><div v-for="legend in legend.z" class="legend-area sub" :style="{background: legend.v, verticalAlign: 'bottom'}">{{ legend.l }}</div>
+            <template v-for="(legend, index) in item.legend">
+              <div class="legend-area" :style="{background: legend.v}" :key="'l_' + index">{{ legend.l }}</div>
+              <div v-for="legend in legend.z" class="legend-area sub" :style="{background: legend.v, verticalAlign: 'bottom'}">{{ legend.l }}</div>
             </template>
           </td>
         </tr>
