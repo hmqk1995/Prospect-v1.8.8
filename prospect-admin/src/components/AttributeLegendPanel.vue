@@ -14,12 +14,12 @@
               :legend="true" />
               <input type="text" class="legend form-control" v-model="item.l"/>
               <button
-                class="btn btn-success" 
+                class="btn btn-success"
                 @click="addSubLegend($event, index)">+</button>
               <button
-                class="delete btn btn-danger" 
+                class="delete btn btn-danger"
                 @click="deleteLegend({
-                  index: index, 
+                  index: index,
                   isSubItem: false
                 })">x</button>
             </div>
@@ -35,8 +35,8 @@
                   <button
                     class="delete btn btn-danger"
                     @click="deleteLegend({
-                      index: sindex, 
-                      isSubItem: true, 
+                      index: sindex,
+                      isSubItem: true,
                       parentIndex: index
                     })">x</button>
                 </div>
@@ -45,7 +45,7 @@
           </div>
         </draggable>
         <button
-          class="btn btn-success" 
+          class="btn btn-success"
           @click="addTopLegend">+</button>
       </div>
       <div v-if="type === 'T'">
@@ -60,16 +60,16 @@
               <input placeholder="Label" type="text" class="legend form-control" v-model="item.l"/>
               <input placeholder="Text Pattern" type="text" class="legend form-control" v-model="item.d"/>
               <button
-                class="delete btn btn-danger" 
+                class="delete btn btn-danger"
                 @click="deleteLegend({
-                  index: index, 
+                  index: index,
                   isSubItem: false
                 })">x</button>
             </div>
           </div>
         </draggable>
         <button
-          class="btn btn-success" 
+          class="btn btn-success"
           @click="addTopLegend">+</button>
       </div>
       <div v-if="type === 'N'">
@@ -117,7 +117,7 @@
           <label class="col-md-4" for="filter">Use color for indefinite Number values</label>
           <div class="col-md-8">
             <b-form-checkbox id="indefiniteNumber"
-              unchecked-value="false" 
+              unchecked-value="false"
               v-model="indefinite" />
             <color-picker v-if="indefinite === true" />
           </div>
@@ -193,7 +193,7 @@ export default {
           break;
       }
     }
-  } 
+  }
 }
 </script>
 
