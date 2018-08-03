@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     attribute: null,
-    record: null
+    record: null,
+    template: null
   },
   mutations: {
     // get json from serve and store it in attribute state
@@ -32,10 +33,10 @@ export default new Vuex.Store({
       })
     },
     setTemplate(state, name) {
-      $.get(_restUrl + 'prsp/v1/template/' + name) //fix paramaters for retrieving template
+      $.get(_restUrl + 'prsp/v1/template/' + name + '&j') //fix paramaters for retrieving template
       .then((response) => {
         console.log(response.data)
-        state.record = response.data
+        state.template = response.data
       })
       .catch((error) => {
         console.log(error)
@@ -47,6 +48,9 @@ export default new Vuex.Store({
     },
     clearRecord(state) {
       state.record = null
+    },
+    clearTemplate(state) {
+      state.template = null
     },
     // set the color info of legends
     setColor(state, info) {
