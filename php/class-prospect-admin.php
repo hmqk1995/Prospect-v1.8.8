@@ -2878,7 +2878,7 @@ public function rest_get_all_templates(WP_REST_Request $request){
 			$template->def->a = $template->all_att_ids; //redundant?
 			$template->n = $template->get_num_records();
 			$template->recids = $template->get_all_record_ids();
-			$template->recordData = null; //will get populated with records in nested get request per template
+			$template->recordData = null; //will get populated with records
 				/*
 			'view' => $template->view,
 			'pview' => $template->pview,
@@ -3169,6 +3169,7 @@ public function rest_get_all_templates(WP_REST_Request $request){
 		$excerpt = $_POST['excerpt'];
 
 		$content = @file_get_contents($transcript_url);
+		var_dump($http_response_header);
 		if ($content === false) {
 			trigger_error("Cannot load transcript file at ".$transcript_url);
 			$result = 'Cannot load transcript file';
