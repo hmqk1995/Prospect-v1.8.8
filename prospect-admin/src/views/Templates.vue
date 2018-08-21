@@ -95,14 +95,12 @@ export default {
     $.get(_restUrl + 'prsp/v1/templates')
       .then((tResponse) => {
           tResponse.data.forEach(function(element, i){
-            console.log("index is " + tResponse.data[i]["n"])
             if(tResponse.data[i]["n"] != 0){
             $.get(_restUrl + 'prsp/v1/records/' + element.id + '&0&' + tResponse.data[i]["n"])
             .then((rResponse) => {
             element.recordData = rResponse.data
           })
           .catch((error) => {
-            console.log("internal loop error")
             console.log(error)
           })
         }
@@ -111,7 +109,6 @@ export default {
         console.log(this.info)
       })
       .catch((error) => {
-        console.log("external loop error")
         console.log(error)
       })
 
