@@ -18,31 +18,28 @@
         </div>
       </div>
     </div>
+    <select v-model="selected">
+      <option disabled value="">Select a Template</option>
+      <option v-for="(item, index) in sortedInfo" :key=index>{{ item.id }}</option>
+      </select>
+      <div>Selected Template: {{ selected }}</div>
+
     <table class="table table-striped table-sm table-bordered">
       <thead class="thead-dark">
         <tr>
           <th width="2%" scope="col"></th>
-          <th @click="sort('id')" width="10%" scope="col">ID</th>
-          <th @click="sort('title.rendered')" width="10%" scope="col">Title</th>
-          <th @click="sort('author')" width="10%" scope="col">Author</th>
-          <th @click="sort('categories')" width="10%" scope="col">Categories</th>
-          <th @click="sort('tags')" width="10%" scope="col">Tags</th>
-          <th @click="sort('modified')" width="10%" scope="col">Date</th>
-          <th @click="sort('template')" width="10%" scope="col">Template</th>
+          <th @click="sort('id')" width="10%" scope="col">Template</th>
+          <th width="10%" scope="col">Records</th>
+          <th width="10%" scope="col">Column 3</th>
 
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td>{{ item.id }}</td>
-          <td><router-link :to="'/record/' + item.id ">{{ item.title.rendered }}</router-link></td>
-          <td>{{ item.author }}</td>
-          <td>{{ item.categories }}</td>
-          <td>{{ item.tags }}</td>
-          <td>{{ item.modified }}</td>
-          <td>{{ item.template }}</td>
-
+          <td><router-link :to="'/record/' + item.id ">{{ item.id }}</router-link></td>
+          <td v-if= "item.recordData" v-for="(record, index2) in item.recordData"> {{ item.recordData[index2].l }}</td>
+          <td v-else>No record data</td>
         </tr>
       </tbody>
     </table>
@@ -57,9 +54,11 @@ export default {
   data () {
     return {
       info: [],
+      records: [],
       type: model.type,
       currentSort: 'id',
-      currentSortDir:'asc'
+      currentSortDir:'asc',
+      selected: 'Select a Template'
     }
   },
   methods: {
@@ -70,7 +69,11 @@ export default {
       }
       this.currentSort = name;
       console.log(this.currentSort);
+    },
+    getRecords(template){
+
     }
+
   },
   computed: {
     sortedInfo () {
@@ -90,30 +93,40 @@ export default {
         if(_a > _b) return 1 * modifier;
         return 0;
       })
+    },
+    recordData() {
+      let arr = [];
+      for(let i = 0; i < this.info.length; i++){
+        if(this.info[i].recordData){
+          console.log(this.info[i].recordData.length);
+          arr.push(this.info[i].recordData);
+        }
     }
+    console.log(arr);
+    return arr;
+  }
   },
   created () {
-    $.get(_restUrl + 'wp/v2/prsp-record')
-      .then((response) => {
-        console.log(response.data)
-        console.log("test")
-        this.info = response.data
+    $.get(_restUrl + 'prsp/v1/templates')
+      .then((tResponse) => {
+          tResponse.data.forEach(function(element, i){
+            if(tResponse.data[i]["n"] != 0){
+            $.get(_restUrl + 'prsp/v1/records/' + element.id + '&0&' + tResponse.data[i]["n"])
+            .then((rResponse) => {
+            element.recordData = rResponse.data
+            //console.info(JSON.stringify(element.recordData))
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        }
+        })
+        this.info = tResponse.data
+        console.info(JSON.stringify(this.info[0]))
       })
       .catch((error) => {
-        console.log(_restUrl + 'prsp/v1/record/265');
         console.log(error)
       })
-    // $.post('http://localhost/cdh/wp-json/wp/v2/posts/4221', {
-    //   'title': 'Hello Moon1'
-    // }, {
-    //   headers: {'X-WP-Nonce': _nonce}
-    // })
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //   })
   },
   mounted () {
 
