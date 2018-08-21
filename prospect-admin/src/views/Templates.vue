@@ -22,25 +22,24 @@
       <thead class="thead-dark">
         <tr>
           <th width="2%" scope="col"></th>
-          <th @click="sort('id')" width="10%" scope="col">ID</th>
           <th @click="sort('def.l')" width="10%" scope="col">Title</th>
-          <th width="10%" scope="col">Test row</th>
-          <th width="10%" scope="col">Attributes</th>
+          <th @click="sort('n')" width="2%" scope="col">Number of Records</th>
+          <th width="20%" scope="col">Attributes</th>
 
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td>{{ item.post_id }}</td>
           <td><router-link :to="'/template/' + item.id ">{{ item.def.l }}</router-link></td>
-          <td>{{ item.recordData }}</td>
+          <td>{{item.n}}</td>
           <td>
-          <template v-for="attribute in item.def.a">
-            <div class="attlist"> {{ attribute }}</router-link></div>
-          </template>
-
+          <span v-for="attribute in item.def.a">
+            <div class="attlist"> {{ attribute }}</div>
+          </span>
           </td>
+
+
         </tr>
       </tbody>
     </table>
@@ -94,6 +93,7 @@ export default {
   created () {
     $.get(_restUrl + 'prsp/v1/templates')
       .then((tResponse) => {
+        /*
           tResponse.data.forEach(function(element, i){
             if(tResponse.data[i]["n"] != 0){
             $.get(_restUrl + 'prsp/v1/records/' + element.id + '&0&' + tResponse.data[i]["n"])
@@ -105,6 +105,7 @@ export default {
           })
         }
         })
+        */
         this.info = tResponse.data
         console.log(this.info)
       })
