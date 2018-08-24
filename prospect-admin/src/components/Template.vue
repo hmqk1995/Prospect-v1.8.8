@@ -28,8 +28,7 @@
         externalLabel="externallabel"
         aria-describedby="external label"
         placeholder="Enter External id"
-        v-model="info.def.l"
-        disabled>
+        v-model="info.def.l">
     </div>
   </div>
 
