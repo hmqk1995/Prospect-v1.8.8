@@ -29,7 +29,7 @@
         <tr>
           <th width="2%" scope="col"></th>
           <th @click="sort('id')" width="10%" scope="col">Template</th>
-          <th width="10%" scope="col">Records</th>
+          <th width="10%" scope="col">Record</th>
           <th width="10%" scope="col">Column 3</th>
 
         </tr>
@@ -37,9 +37,11 @@
       <tbody>
         <tr v-for="(item, index) in sortedInfo" :key=index>
           <th scope="row"><input type="checkbox"></th>
-          <td><router-link :to="'/record/' + item.id ">{{ item.id }}</router-link></td>
+          <td><router-link :to="'/template/' + item.id ">{{ item.id }}</router-link></td>
+          <table>
           <td v-if= "item.recordData" v-for="(record, index2) in item.recordData"> {{ item.recordData[index2].l }}</td>
           <td v-else>No record data</td>
+          </table>
         </tr>
       </tbody>
     </table>
