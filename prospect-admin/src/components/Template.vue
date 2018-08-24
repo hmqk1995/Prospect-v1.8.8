@@ -5,7 +5,42 @@
     <div>
       {{ info }}
     </div>
+  <div class="form-group row">
+    <label class="col-md-2" for="uniqueid">Internal id:</label>
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        id="uniqueid"
+        aria-describedby="emailHelp"
+        placeholder="Enter Unique ID"
+        v-model="info.id"
+        disabled>
+    </div>
+    <small class="col-md-6 form-text text-muted">You must supply an internal ID for the new Template. It must only consist of alphabetic characters (in plain ASCII), numbers, underscores and hyphens (it cannot contain spaces, punctuation, Unicode-only characters, etc).</small>
   </div>
+  <div class="form-group row">
+    <label class="col-md-2" for="externallabel">External id:</label>
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        externalLabel="externallabel"
+        aria-describedby="external label"
+        placeholder="Enter External id"
+        v-model="info.def.l"
+        disabled>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  </div>
+
 </template>
 <script>
 import $ from 'axios'
