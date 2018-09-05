@@ -3168,12 +3168,20 @@ public function rest_get_all_templates(WP_REST_Request $request){
 		$transcript_url = $_POST['transcript'];
 		$excerpt = $_POST['excerpt'];
 
-		$content = @file_get_contents($transcript_url);
-		var_dump($http_response_header);
+		$arrContextOptions=array(
+      "ssl"=>array(
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+        ),
+    );
+
+	$content = @file_get_contents($transcript_url, false, stream_context_create($arrContextOptions));
+
+
 		if ($content === false) {
 			trigger_error("Cannot load transcript file at ".$transcript_url);
-			$result = 'Cannot load transcript file';
-		} else {
+		}
+		else {
 				// Remove unwanted prefix chars until first "[" appears
 			$ut8_content	= utf8_encode($content);
 			$paren_start 	= mb_strpos($ut8_content, "[");
