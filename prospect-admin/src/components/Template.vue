@@ -12,7 +12,7 @@
         type="text"
         class="form-control"
         id="uniqueid"
-        aria-describedby="emailHelp"
+        aria-describedby="unique id"
         placeholder="Enter Unique ID"
         v-model="info.id"
         disabled>
